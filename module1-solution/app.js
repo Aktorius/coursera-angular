@@ -15,21 +15,41 @@
 
       if (totalItems == 0){
         $scope.message = "Please enter data first";
+        $scope.textStyle = {
+          "color" : "#F00"
+        }
+        $scope.inputTextStyle = {
+          "border-color" : "#F00"
+        }
       } else if (totalItems <= 3){
         $scope.message = "Enjoy!"
+        $scope.textStyle = {
+          "color" : "#3C3"
+        }
+        $scope.inputTextStyle = {
+          "border-color" : "#3C3"
+        }
       }else{
         $scope.message = "Too much!";
+        $scope.textStyle = {
+          "color" : "#3C3"
+        }
+        $scope.inputTextStyle = {
+          "border-color" : "#3C3"
+        }
       }
     };
 
     function calculateItemsForString (string){
       var items = string.split(",");
-      //If the length is 1 check if it is not an empty string
-      if (items.length == 1 && items[0] === ""){
-        return 0;
-      }else{
-        return items.length;
+      var count = 0;
+
+      for (var i=0; i<items.length; i++){
+        if (items[i].trim() !== ""){
+          count ++
+        }
       }
+      return count;
     };
   }
 })();
